@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'jigsaw-project-zomboid'
+    id 'com.gradleup.shadow'
+}
+
+group = p_group
+version = p_version
+
+java {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+jigsawGame {
+    splitSourceSets()
+}
+
+jigsawAccess {
+    addManipulators(file("$projectDir/src/common/resources/example-mod.manipulator"))
+}
+
+jigsawInject {
+    setModJson(file("$projectDir/src/common/resources/puzzle.mod.json"))
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    puzzleLoader "dev.puzzleshq:puzzle-loader-core:1.3.4-alpha"
+    puzzleLoader "dev.puzzleshq:puzzle-loader-zomboid:1.0.0-alpha"
+}
+
+processCommonResources {
+    def projectProperties = [
+            "p_name": p_name,
+            "p_version": ((String)version).contains(".") ? version : "0.0.0",
+            "p_desc": p_desc,
+
+            "p_id": p_id,
+            "p_group": p_group,
+            "p_author": p_author
+    ]
+
+    inputs.properties projectProperties
+
+    filesMatching(["puzzle.mod.json"]) {
+        expand projectProperties
+    }
+}
+
+wrapper {
+    gradleVersion = "8.14"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))

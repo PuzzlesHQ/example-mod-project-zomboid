@@ -17,15 +17,15 @@
   },
 
   "entrypoints": {
-    "client-postInit": "com.examplemod.exmod.ClientExampleMod",
-    "client-init": "com.examplemod.exmod.ClientExampleMod",
-    "client-preInit": "com.examplemod.exmod.ClientExampleMod",
+    "client-postInit": "${p_group}.ClientExampleMod",
+    "client-init": "${p_group}.ClientExampleMod",
+    "client-preInit": "${p_group}.ClientExampleMod",
 
-    "preInit": "com.examplemod.exmod.PreInitExampleMod",
-    "init": "com.examplemod.exmod.InitExampleMod",
-    "postInit": "com.examplemod.exmod.PostInitExampleMod",
+    "preInit": "${p_group}.PreInitExampleMod",
+    "init": "${p_group}.InitExampleMod",
+    "postInit": "${p_group}.PostInitExampleMod",
 
-    "server-init": "com.examplemod.exmod.ServerExampleMod"
+    "server-init": "${p_group}.ServerExampleMod"
   },
 
   // Comments are supported in here, just ignore the error your code editor may display
@@ -44,7 +44,7 @@
   },
 
   "access-writers": [
-    "example-mod.manipulator"
+    "${p_id}.manipulator"
   ],
 
   "custom": {

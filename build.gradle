@@ -29,8 +29,8 @@ repositories {
 }
 
 dependencies {
-    puzzleLoader "dev.puzzleshq:puzzle-loader-core:1.3.4-alpha"
-    puzzleLoader "dev.puzzleshq:puzzle-loader-zomboid:1.0.0-alpha"
+    puzzleLoader "dev.puzzleshq:puzzle-loader-core:$puzzle_loader_core_version"
+    puzzleLoader "dev.puzzleshq:puzzle-loader-zomboid:$puzzle_loader_zomboid_version"
 }
 
 processCommonResources {
